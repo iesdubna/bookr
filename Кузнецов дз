@@ -1,0 +1,146 @@
+import time
+from taskmanage import task
+from taskmanage import taskgraph
+
+def fake_download_file_1():
+    print("Download file 1 ...")
+def fake_download_file_3():
+    print("Download file 1 ...")
+
+def fake_action_5():
+    print("Start action 5")
+    print("Stop action 5")
+def fake_action_0():
+    print("Start action 0")
+    print("Stop action 0")
+
+def fake_download_file_2():
+    print("Download file 2 ...")
+def fake_action_1():
+    print("Start action 1")
+    print("Stop action 1")
+
+def fake_augment_file_1():
+    print("Augment file 1 ...")
+def fake_action_2():
+    print("Start action 2")
+    print("Stop action 2")
+
+def fake_do_analysis_1_file_1_2():
+    print("Do analysis 1 of files 1 and 2 ...")
+def fake_action_3():
+    print("Start action 3")
+    print("Stop action 3")
+
+def fake_do_analysis_2_file_1():
+    print("Do analysis 2 of file 1 ...")
+def fake_action_4():
+    print("Start action 4")
+    print("Stop action 4")
+
+task0 = task("0")
+task0.set_action(fake_download_file_1)
+task0.set_action(fake_action_0)
+
+task5 = task("5")
+task0.set_action(fake_download_file_3)
+task0.set_action(fake_action_5)
+task1 = task("1")
+task1.set_action(fake_download_file_2)
+task1.set_action(fake_action_1)
+
+task2 = task("2")
+task2.set_action(fake_augment_file_1)
+task2.set_action(fake_action_2)
+
+task3 = task("3")
+task3.set_action(fake_do_analysis_1_file_1_2)
+task3.set_action(fake_action_3)
+
+task4 = task("4")
+task4.set_action(fake_do_analysis_2_file_1)
+task4.set_action(fake_action_4)
+
+
+task4.depends_on(task5)
+task2.depends_on(task0)
+task3.depends_on(task1)
+task3.depends_on(task2)
+task4.depends_on(task2)
+
+Taskgraph = taskgraph()
+Taskgraph.append_task(task0)
+Taskgraph.append_task(task1)
+Taskgraph.append_task(task2)
+Taskgraph.append_task(task3)
+Taskgraph.append_task(task4)
+Taskgraph.append_task(task0)
+Taskgraph.append_task(task1)
+Taskgraph.append_task(task5)
+
+Taskgraph.run_correct_order()
+
+
+import threading
+import time
+
+class task:
+    def __init__(self, name):
+        self.name = name
+        self.action = None
+        self.dependencies = []
+        self.done_callback = None
+
+    def set_action(self, func):
+        self.action = func
+    def run(self):
+        print(f"I am a task. My name is {self.name}")
+        if self.action is not None:
+            self.action()
+        if self.done_callback is not None:
+            self.done_callback(self)
+
+    def depends_on(self, task):
+        self.dependencies.append(task)
+
+class taskgraph:
+    def __init__(self):
+        self.tasks = []
+        self.run_sequence = []
+        self.tasks_done = []
+
+    def done(self, task):
+        self.tasks_done.append(task)
+
+    def append_task(self, task):
+        self.tasks.append(task)
+        task.done_callback = self.done
+
+    def show_all_tasks(self):
+        for t in self.tasks:
+            print(t.name)
+
+    def run(self):
+        # TODO: take into account task dependencies
+        for t in self.tasks:
+            t.run()
+
+    def run_correct_order(self):
+        tmp_tasks = set(self.tasks)
+        while len(tmp_tasks) > 0:
+            for t in set(tmp_tasks):
+                if len(set(t.dependencies) & set(self.run_sequence)) == len(t.dependencies):
+                    self.run_sequence.append(t)
+                    tmp_tasks.remove(t)
+        for t in self.run_sequence:
+            t.run()
+
+    def run_in_threads(self):
+        tmp_tasks = set(self.tasks)
+        while len(self.tasks_done) < len(self.tasks):
+            for t in set(tmp_tasks):
+                if len(set(t.dependencies) & set(self.tasks_done)) == len(t.dependencies):
+                    th = threading.Thread(name=t.name, target=t.run)
+                    th.start()
+                    tmp_tasks.remove(t)
+            time.sleep(1)
