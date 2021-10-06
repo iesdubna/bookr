@@ -43,9 +43,9 @@ task4.set_action(fake_action_4)
 
 
 task2.depends_on(task0)
+task2.depends_on(task1)
 task3.depends_on(task1)
-task3.depends_on(task2)
-task4.depends_on(task2)
+task3.depends_on(task0)
 
 taskgraph = task.Taskgraph()
 taskgraph.append_task(task2)
@@ -53,6 +53,7 @@ taskgraph.append_task(task3)
 taskgraph.append_task(task4)
 taskgraph.append_task(task0)
 taskgraph.append_task(task1)
+
 
 #taskgraph.run_correct_order()
 taskgraph.run_in_threads()
