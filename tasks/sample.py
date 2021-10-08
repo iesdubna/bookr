@@ -21,10 +21,6 @@ def fake_action_3():
     time.sleep(3)
     print("Stop action 3")
 
-def fake_action_4():
-    print("Start action 4")
-    time.sleep(1)
-    print("Stop action 4")
 
 task0 = task.Task("0")
 task0.set_action(fake_action_0)
@@ -38,8 +34,7 @@ task2.set_action(fake_action_2)
 task3 = task.Task("3")
 task3.set_action(fake_action_3)
 
-task4 = task.Task("4")
-task4.set_action(fake_action_4)
+
 
 
 task2.depends_on(task0)
@@ -50,7 +45,7 @@ task3.depends_on(task0)
 taskgraph = task.Taskgraph()
 taskgraph.append_task(task2)
 taskgraph.append_task(task3)
-taskgraph.append_task(task4)
+
 taskgraph.append_task(task0)
 taskgraph.append_task(task1)
 
