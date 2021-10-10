@@ -49,10 +49,11 @@ task3.depends_on(task0)
 
 taskgraph = task.Taskgraph()
 taskgraph.append_task(task2)
-taskgraph.append_task(task3)
 taskgraph.append_task(task4)
-taskgraph.append_task(task0)
+taskgraph.append_task(task3)
 taskgraph.append_task(task1)
+taskgraph.append_task(task0)
+
 
 
 #taskgraph.run_correct_order()
