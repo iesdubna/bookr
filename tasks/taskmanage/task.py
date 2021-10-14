@@ -12,7 +12,6 @@ class Task:
         self.action = func
 
     def run(self):
-        print(f"I am a task. My name is {self.name}")
         if self.action is not None:
             self.action()
         if self.done_callback is not None:
