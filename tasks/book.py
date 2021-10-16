@@ -11,3 +11,11 @@ def book():
             for chunk in response.iter_content(chunk_size=8192):
                 c.write(chunk)
 
+task1 = task.Task("1")
+task1.set_action(book())
+
+taskgraph = task.Taskgraph()
+taskgraph.append_task(task1)
+
+taskgraph.run_in_threads()
+
