@@ -1,6 +1,7 @@
 import threading
 import time
 
+
 class Task:
     def __init__(self, name):
         self.name = name
@@ -20,6 +21,8 @@ class Task:
 
     def depends_on(self, task):
         self.dependencies.append(task)
+
+  
 
 
 class Taskgraph:
@@ -62,3 +65,4 @@ class Taskgraph:
                     th.start()
                     tmp_tasks.remove(t)
             time.sleep(1)
+            
