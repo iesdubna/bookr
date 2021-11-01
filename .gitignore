@@ -3,10 +3,5 @@
 *.egg-info
 *__pycache__
 *.pyc
-<<<<<<< Updated upstream
-build
-dist
-=======
-/try_therading.py
+*.yaml
 *.txt
->>>>>>> Stashed changes
