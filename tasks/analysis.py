@@ -35,12 +35,12 @@ def analysis(bookpath,length):
         for j in list(i):
             b = j[0] + " " + j[1]
             a.append(b)
-    for i in a:
-        i = i.translate({ord(j): None for j in '.'})
-        i = i.translate({ord(j): None for j in '!'})
-        i = i.translate({ord(j): None for j in '?'})
-        i = i.translate({ord(j): None for j in ','})
-        i = i.translate({ord(j): None for j in '-'})
+    for i in range(len(a)):
+        a[i] = a[i].translate({ord(j): None for j in '.'})
+        a[i] = a[i].translate({ord(j): None for j in '!'})
+        a[i] = a[i].translate({ord(j): None for j in '?'})
+        a[i] = a[i].translate({ord(j): None for j in ','})
+        a[i] = a[i].translate({ord(j): None for j in '-'})
     for i in a:
         if len(i.split()) == 1:
             a.remove(i)
