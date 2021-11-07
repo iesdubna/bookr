@@ -1,5 +1,6 @@
 import time
-from taskmanage import task
+from bookr.taskmanage import task
+from bookr.taskmanage import taskgraph
 
 def fake_action_0():
     print("Start action 0")
@@ -47,7 +48,7 @@ task2.depends_on(task1)
 task3.depends_on(task1)
 task3.depends_on(task0)
 
-taskgraph = task.Taskgraph()
+taskgraph = taskgraph.Taskgraph()
 taskgraph.append_task(task2)
 taskgraph.append_task(task3)
 taskgraph.append_task(task4)
@@ -55,5 +56,5 @@ taskgraph.append_task(task0)
 taskgraph.append_task(task1)
 
 
-#taskgraph.run_correct_order()
+#taskgraph.py.run_correct_order()
 taskgraph.run_in_threads()
