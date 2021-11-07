@@ -24,4 +24,3 @@ def create_tasks():
 
         tasks.append(task)
     return tasks 
-       
