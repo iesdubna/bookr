@@ -1,0 +1,12 @@
+datadir: data
+books:
+- name: Cosmic Saboteur
+  author: Frank M. Robinson
+  link: "https://www.gutenberg.org/cache/epub/66540/pg66540.txt"
+  txt_file: cosmic_saboteur.txt
+  word_analysis_file: word_analysis_cosmic_saboteur.yaml
+- name: The Killer
+  author: J. T. Oliver
+  link: "https://www.gutenberg.org/files/65770/65770-0.txt"
+  txt_file: the_killer.txt
+  word_analysis_file: word_analysis_the_killer.yaml
