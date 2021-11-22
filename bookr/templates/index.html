@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div>
+      {% for book in books %}
+      <hr>
+      Name: {{ book["name"] }}<br>
+      Author: {{ book["author"] }}<br>
+      <a href="{{book['link']}}">original link</a><br>
+      <a href="/api/word_analysis/{{book['word_analysis_file']}}">word analysis api link</a><br>
+      <a href="/api/sentence_analysis/{{book['sentence_analysis_file']}}">sentence analysis api link</a><br>
+      {% endfor %}
+    </div>
+{% endblock %}
