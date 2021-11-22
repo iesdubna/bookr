@@ -61,8 +61,8 @@ def create_tasks():
     tasks = []
     for item in cfg.CONF["books"]:
         t = task.Task(item["word_analysis_file"])
-        bookpath = os.path.join(cfg.CONF["datadir"], item["txt_file"])
-        resultpath = os.path.join(cfg.CONF["datadir"], item["word_analysis_file"])
+        bookpath = cfg.datapath(item["txt_file"])
+        resultpath = cfg.datapath(item["word_analysis_file"])
         func_without_arguments = partial(word_analysis, bookpath, resultpath)
         t.set_action(func_without_arguments)
         tasks.append(t)
