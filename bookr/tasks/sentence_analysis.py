@@ -61,6 +61,8 @@ def analysis(bookpath, resultpath):
         yaml.dump(result, f, default_flow_style=False)
 
 
+
+
 def create_tasks():
     tasks = []
     for book in cfg.CONF["books"]:
@@ -71,3 +73,6 @@ def create_tasks():
         task.set_action(func_without_arguments)
         tasks.append(task)
     return tasks
+
+
+def analysis(bookpath, resultpath):

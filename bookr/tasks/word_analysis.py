@@ -67,3 +67,4 @@ def create_tasks():
         t.set_action(func_without_arguments)
         tasks.append(t)
     return tasks
+
