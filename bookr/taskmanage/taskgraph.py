@@ -1,4 +1,4 @@
-import threading
+import multiprocessing
 import time
 
 class Taskgraph:
@@ -6,13 +6,11 @@ class Taskgraph:
         self.tasks = []
         self.run_sequence = []
         self.tasks_done = []
-
-    def done(self, task):
-        self.tasks_done.append(task)
+        self.queue = multiprocessing.Queue()
 
     def append_task(self, task):
         self.tasks.append(task)
-        task.done_callback = self.done
+        task.done_queue = self.queue
 
     def show_all_tasks(self):
         for t in self.tasks:
@@ -37,7 +35,14 @@ class Taskgraph:
         while len(self.tasks_done) < len(self.tasks):
             for t in set(tmp_tasks):
                 if len(set(t.dependencies) & set(self.tasks_done)) == len(t.dependencies):
-                    th = threading.Thread(name=t.name, target=t.run)
-                    th.start()
+                    p = multiprocessing.Process(target=t.run)
+                    p.start()
                     tmp_tasks.remove(t)
             time.sleep(1)
+            try:
+                while True:
+                    task_done = self.queue.get(timeout=0)
+                    self.tasks_done.append(task_done)
+            except:
+                pass
+

@@ -1,8 +1,6 @@
 import string
 from functools import partial
-import os.path
 
-import nltk
 from nltk.probability import FreqDist
 import yaml
 from nltk.tokenize import RegexpTokenizer
@@ -13,6 +11,10 @@ from bookr.taskmanage import task
 from bookr import cfg
 
 
+STOP_WORDS = set(stopwords.words('english'))
+STOP_WORDS.add("gutenberg")
+
+
 def word_analysis(bookpath, resultpath):
     with open(bookpath, encoding="utf-8") as f:
         text = f.read()
@@ -21,13 +23,11 @@ def word_analysis(bookpath, resultpath):
     tokenizer = RegexpTokenizer(r'\w+')
     words = tokenizer.tokenize(text)
 
-    stop_words = set(stopwords.words('english'))
-    stop_words.add("gutenberg")
     stemmer = PorterStemmer()
 
     words2 = []
     for word in words:
-        if word.lower() not in stop_words:
+        if word.lower() not in STOP_WORDS:
             words2.append(stemmer.stem(word))
 
     # 20 самых частых слов
@@ -44,8 +44,8 @@ def word_analysis(bookpath, resultpath):
     thirty_most_frequent_words = (sum(i[1] for i in fdist.most_common(30)) / len(words2)) * 100
 
     analysis_result = {
-        "most_frequent": list(dict(fdist.most_common(20))),
-        "most_rare": list(FreqDist(dict(fdist.most_common()[-20:]))),
+        "most_frequent": list(dict(fdist.most_common(100))),
+        "most_rare": list(FreqDist(dict(fdist.most_common()[-100:]))),
         "lexical_diversity": lex_div,
         "percentile_10": ten_most_frequent_words,
         "percentile_20": twenty_most_frequent_words,

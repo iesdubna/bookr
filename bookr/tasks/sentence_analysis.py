@@ -1,8 +1,9 @@
-import nltk
 from bookr.taskmanage.task import Task
-from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.tokenize import word_tokenize
 import yaml
 from nltk import FreqDist
+from nltk import sent_tokenize
+from nltk import bigrams
 from functools import partial
 from bookr import cfg
 
@@ -39,8 +40,8 @@ def analysis(bookpath, resultpath):
 
     # calculate bigrams
     bgms_fdist = FreqDist()
-    for sentence in nltk.sent_tokenize(text):
-        for b in nltk.bigrams(word_tokenize(sentence)):
+    for sentence in sent_tokenize(text):
+        for b in bigrams(word_tokenize(sentence)):
             bgms_fdist[b] += 1
 
     # remove bigrams where first or second words starts with one of wrong symbols

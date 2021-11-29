@@ -1,4 +1,5 @@
 datadir: data
+dendrogram_file: dendrogram.png
 books:
 - name: Cosmic Saboteur
   author: Frank M. Robinson
@@ -12,3 +13,16 @@ books:
   txt_file: the_killer.txt
   word_analysis_file: word_analysis_the_killer.yaml
   sentence_analysis_file: sentence_analysis_the_killer.yaml
+- name: WISE MEN AND A MULE
+  author: W. C. Tuttle
+  link: "https://www.gutenberg.org/cache/epub/66823/pg66823.txt"
+  txt_file: wise_men_and_a_mule.txt
+  word_analysis_file: word_analysis_wise_men_and_a_mule.yaml
+  sentence_analysis_file: sentence_analysis_wise_men_and_a_mule.yaml
+- name: The People of the Abyss
+  author: Jack London
+  link: https://www.gutenberg.org/files/1688/1688-0.txt
+  txt_file: the_people_of_the_abyss.txt
+  word_analysis_file: word_analysis_the_people_of_the_abyss.yaml
+  sentence_analysis_file: sentence_analysis_the_people_of_the_abyss.yaml
+
