@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div>
+        <body bgcolor="#FFFFE0"> 
+        <hr>
+        <h1 align="center" style="color:Black">{{new_file_analysis["book_name"]}} <img src="https://acegif.com/wp-content/gifs/book-56.gif" width="15%" height="15%" align="right"></h1>
+        <h2 align="center" style="color:Black">{{new_file_analysis["book_author"]}}</h2>
+        <h2 align="center" style="color:Black">Word analysis results</h2>
+        <font size="4"> <b> Lexical variety of words: </b> {{ new_file_analysis["lexical_diversity"] }}<br>
+        <b> The most common words: </b> {{ new_file_analysis["most_frequent"] }}<br>
+        <b> The most rare words: </b> {{ new_file_analysis["most_rare"] }}<br>   
+        <b> Percentage of the 10 most occurring words among all words: </b> {{ new_file_analysis["percentile_10"] }}%<br>
+        <b> Percentage of the 20 most occurring words among all words: </b> {{ new_file_analysis["percentile_20"] }}%<br>
+        <b> Percentage of the 30 most occurring words among all words: </b> {{ new_file_analysis["percentile_30"] }}%<br>  </font>
+        <br> <a href="/"><font size="4" color="Black">Return to HomePage </font></a> </font> </br>
+        </body>
+    </div>
+{% endblock %}

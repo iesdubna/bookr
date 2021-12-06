@@ -25,11 +25,34 @@ def book(txt_file):
         return resp
 
 
-@APP.route('/api/word_analysis/<word_analysis_file>')
-def word_analysis(word_analysis_file):
-    with open(cfg.datapath(word_analysis_file)) as f:
-        return flask.jsonify(yaml.safe_load(f))
+@APP.route('/word_analysis/<book_id>')
+def word_analysis(book_id):
+    books=cfg.CONF["books"]
+    word_analysis_data={}
+    for book in books:
+        if(book["book_id"] == book_id):
+            with open(cfg.datapath(book["word_analysis_file"])) as f:
+                analyaml=yaml.safe_load(f)   
+                word_analysis_data["lexical_diversity"] = round(analyaml["lexical_diversity"], 2)
+                mf_string = ""
+                for i in analyaml["most_frequent"]:
+                    mf_string += (i + '; ')
+                word_analysis_data["most_frequent"] = mf_string
+                mr_string = ""
+                for j in analyaml["most_rare"]:
+                    mr_string += (j + '; ')
+                word_analysis_data["most_rare"] = mr_string
+                word_analysis_data["percentile_10"] = round(analyaml["percentile_10"])
+                word_analysis_data["percentile_20"] = round(analyaml["percentile_20"])
+                word_analysis_data["percentile_30"] = round(analyaml["percentile_30"])
+                word_analysis_data["book_name"] = book["name"]
+                word_analysis_data["book_author"] = book["author"]
+    return flask.render_template('word_analysis.html', new_file_analysis=word_analysis_data)
 
+@APP.route('/api/word_analysis/<word_analysis_file>')
+def word_analysis_for_api(word_analysis_file):
+    with open(cfg.datapath(word_analysis_file)) as f:
+        return flask.render_template('word_analysis.html', wew=yaml.safe_load(f))
 
 @APP.route('/api/sentence_analysis/<sentence_analysis_file>')
 def sentence_analysis(sentence_analysis_file):

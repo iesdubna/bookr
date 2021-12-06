@@ -44,8 +44,8 @@ def word_analysis(bookpath, resultpath):
     thirty_most_frequent_words = (sum(i[1] for i in fdist.most_common(30)) / len(words2)) * 100
 
     analysis_result = {
-        "most_frequent": list(dict(fdist.most_common(100))),
-        "most_rare": list(FreqDist(dict(fdist.most_common()[-100:]))),
+        "most_frequent": list(dict(fdist.most_common(20))),
+        "most_rare": list(FreqDist(dict(fdist.most_common()[-20:]))),
         "lexical_diversity": lex_div,
         "percentile_10": ten_most_frequent_words,
         "percentile_20": twenty_most_frequent_words,
