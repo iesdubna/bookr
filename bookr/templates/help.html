@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div>
+      {% for book in books %}
+      <hr>
+      Name: {{ book["name"] }}<br>
+      Author: {{ book["author"] }}<br>
+      <a href="bookr/templates/index.html">original link</a><br>
+        
+      {% endfor %}
+    </div>
+{% endblock %}
