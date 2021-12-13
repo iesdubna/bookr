@@ -8,7 +8,7 @@
       Author: {{ book["author"] }}<br>
       <a href="{{book['link']}}">original link</a><br>
       <a href="/word_analysis/{{book['book_id']}}">word analysis link</a><br>
-      <a href="/api/sentence_analysis/{{book['sentence_analysis_file']}}">sentence analysis api link</a><br>
+      <a href="/sentence_analysis/{{book['book_id']}}">sentence analysis link</a><br>
       {% endfor %}
     </div>
 {% endblock %}
