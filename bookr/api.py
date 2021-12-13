@@ -50,7 +50,7 @@ def word_analysis(book_id):
     return flask.render_template('word_analysis.html', new_file_analysis=word_analysis_data)
 
 @APP.route('/sentence_analysis/<book_id>')
-def word_analysis(book_id):
+def sentence_analysis(book_id):
     books=cfg.CONF["books"]
     sentence_analysis_data={}
     for book in books:
