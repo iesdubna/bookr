@@ -73,7 +73,7 @@ def word_analysis_for_api(word_analysis_file):
         return flask.render_template('word_analysis.html', wew=yaml.safe_load(f))
 
 @APP.route('/api/sentence_analysis/<sentence_analysis_file>')
-def sentence_analysis(sentence_analysis_file):
+def sentence_analysis_for_api(sentence_analysis_file):
     with open(cfg.datapath(sentence_analysis_file)) as f:
         return flask.jsonify(yaml.safe_load(f))
 
