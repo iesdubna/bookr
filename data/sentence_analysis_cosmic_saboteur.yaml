@@ -1,0 +1,45 @@
+most_frequent_bigrams:
+  Mr._Ainsworth: 52
+  Project_Gutenberg-tm: 55
+  Stan_thought: 44
+  There_was: 40
+  and_he: 58
+  and_the: 99
+  and_then: 49
+  at_the: 56
+  did_n't: 56
+  for_a: 38
+  had_been: 58
+  he_had: 45
+  he_was: 44
+  in_a: 50
+  in_the: 113
+  of_a: 43
+  of_the: 158
+  on_the: 79
+  to_the: 107
+  was_a: 58
+most_frequent_sentence_lengths:
+  3: 86
+  4: 81
+  5: 99
+  6: 107
+  7: 144
+  8: 136
+  9: 133
+  10: 120
+  11: 115
+  12: 130
+  13: 108
+  14: 100
+  15: 107
+  16: 71
+  17: 87
+  18: 76
+  19: 78
+  20: 42
+  21: 45
+  22: 56
+sentence_length_average: 14
+sentence_length_max: 123
+sentence_length_min: 2

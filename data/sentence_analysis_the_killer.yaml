@@ -1,0 +1,45 @@
+most_frequent_bigrams:
+  Archive_Foundation: 13
+  Gutenberg-tm_electronic: 18
+  Gutenberg_Literary: 13
+  If_you: 12
+  Literary_Archive: 13
+  Project_Gutenberg: 28
+  Project_Gutenberg-tm: 55
+  United_States: 15
+  electronic_work: 11
+  electronic_works: 16
+  in_the: 20
+  of_the: 40
+  of_this: 18
+  terms_of: 16
+  the_Project: 27
+  the_United: 14
+  the_terms: 13
+  this_agreement: 15
+  to_the: 24
+  with_the: 18
+most_frequent_sentence_lengths:
+  2: 19
+  3: 11
+  4: 5
+  5: 6
+  7: 9
+  8: 15
+  9: 12
+  10: 11
+  11: 6
+  12: 14
+  13: 11
+  14: 8
+  17: 7
+  19: 8
+  20: 5
+  21: 5
+  23: 6
+  25: 6
+  26: 6
+  34: 7
+sentence_length_average: 20
+sentence_length_max: 123
+sentence_length_min: 2

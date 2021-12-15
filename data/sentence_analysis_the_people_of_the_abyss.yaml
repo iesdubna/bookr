@@ -1,0 +1,45 @@
+most_frequent_bigrams:
+  "an_\u2019": 137
+  and_the: 186
+  at_the: 83
+  by_the: 85
+  for_a: 89
+  for_the: 126
+  from_the: 89
+  in_a: 90
+  in_the: 347
+  it_is: 102
+  of_a: 83
+  of_the: 472
+  on_the: 145
+  to_be: 83
+  to_the: 220
+  with_the: 84
+  "\u2019_s": 276
+  "\u2019_t": 119
+  "\u201D_I": 86
+  "\u201D_\u201C": 104
+most_frequent_sentence_lengths:
+  3: 85
+  5: 74
+  6: 85
+  8: 82
+  9: 78
+  10: 76
+  11: 74
+  12: 88
+  13: 80
+  14: 75
+  15: 84
+  16: 100
+  17: 93
+  18: 99
+  19: 101
+  20: 82
+  22: 71
+  23: 74
+  24: 92
+  25: 77
+sentence_length_average: 24
+sentence_length_max: 167
+sentence_length_min: 1
