@@ -56,16 +56,16 @@ def sentence_analysis(book_id):
     for book in books:
         if(book["book_id"] == book_id):
             with open(cfg.datapath(book["sentence_analysis_file"])) as f:
-                analyaml=yaml.safe_load(f)   
+                analyaml_1=yaml.safe_load(f)   
                 
-                sentence_analysis_data["sentence_length_max"] = round(analyaml["sentence_length_max"])
-                sentence_analysis_data["sentence_length_average"] = round(analyaml["sentence_length_average"])
-                sentence_analysis_data["sentence_length_min"] = round(analyaml["sentence_length_min"])
-                sentence_analysis_data["most_frequent_sentence_lengths"] = round(analyaml["most_frequent_sentence_lengths"])
-                sentence_analysis_data["most_frequent_bigrams"] = round(analyaml["most_frequent_bigrams"])
+                sentence_analysis_data["sentence_length_max"] = round(analyaml_1["sentence_length_max"])
+                sentence_analysis_data["sentence_length_average"] = round(analyaml_1["sentence_length_average"])
+                sentence_analysis_data["sentence_length_min"] = round(analyaml_1["sentence_length_min"])
+                sentence_analysis_data["most_frequent_sentence_lengths"] = round(analyaml_1["most_frequent_sentence_lengths"])
+                sentence_analysis_data["most_frequent_bigrams"] = round(analyaml_1["most_frequent_bigrams"])
                 sentence_analysis_data["book_name"] = book["name"]
                 sentence_analysis_data["book_author"] = book["author"]
-    return flask.render_template('sentence_analysis.html', new_file_analysis=sentence_analysis_data)
+    return flask.render_template('sentence_analysis.html', new_file_analysis_1=sentence_analysis_data)
 
 @APP.route('/api/word_analysis/<word_analysis_file>')
 def word_analysis_for_api(word_analysis_file):

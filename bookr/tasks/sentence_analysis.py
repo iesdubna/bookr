@@ -56,7 +56,7 @@ def analysis(bookpath, resultpath):
         "sentence_length_average": average_length,
         "sentence_length_min": min_length,
         "most_frequent_sentence_lengths": {l: n for l, n in fdist.most_common(20)},
-        "most_frequent_bigrams:": {"_".join(b): n for b, n in bgms_fdist.most_common(20)},
+        "most_frequent_bigrams": {"_".join(b): n for b, n in bgms_fdist.most_common(20)},
     }
     with open(resultpath, "w") as f:
         yaml.dump(result, f, default_flow_style=False)
