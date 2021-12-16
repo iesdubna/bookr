@@ -1,7 +1,7 @@
 import os.path
 import yaml
 
-import flask 
+import flask
 import jinja2
 
 from bookr import cfg
@@ -49,7 +49,7 @@ def word_analysis(book_id):
                 word_analysis_data["book_author"] = book["author"]
     return flask.render_template('word_analysis.html', new_file_analysis=word_analysis_data)
 
-@APP.route('/sentence_analysis/<book_id>') 
+@APP.route('/sentence_analysis/<book_id>')
 def sentence_analysis(book_id):
     books=cfg.CONF["books"]
     sentence_analysis_data={}
@@ -58,11 +58,11 @@ def sentence_analysis(book_id):
             with open(cfg.datapath(book["sentence_analysis_file"])) as f:
                 analyaml_1=yaml.safe_load(f)   
                 
-                sentence_analysis_data["sentence_length_max"] = analyaml_1["sentence_length_max"]
-                sentence_analysis_data["sentence_length_average"] = analyaml_1["sentence_length_average"]
-                sentence_analysis_data["sentence_length_min"] = analyaml_1["sentence_length_min"]
-                sentence_analysis_data["most_frequent_sentence_lengths"] = analyaml_1["most_frequent_sentence_lengths"]
-                sentence_analysis_data["most_frequent_bigrams"] = analyaml_1["most_frequent_bigrams"]
+                sentence_analysis_data["sentence_length_max"] = round(analyaml_1["sentence_length_max"])
+                sentence_analysis_data["sentence_length_average"] = round(analyaml_1["sentence_length_average"])
+                sentence_analysis_data["sentence_length_min"] = round(analyaml_1["sentence_length_min"])
+                sentence_analysis_data["most_frequent_sentence_lengths"] = round(analyaml_1["most_frequent_sentence_lengths"])
+                sentence_analysis_data["most_frequent_bigrams"] = round(analyaml_1["most_frequent_bigrams"])
                 sentence_analysis_data["book_name"] = book["name"]
                 sentence_analysis_data["book_author"] = book["author"]
     return flask.render_template('sentence_analysis.html', new_file_analysis_1=sentence_analysis_data)
